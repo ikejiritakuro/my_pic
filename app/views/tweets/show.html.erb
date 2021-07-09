@@ -1,5 +1,6 @@
 <div class="contents row">
   <div class="content_post" style="background-image: url(<%= @tweet.image %>);">
+    <%= image_tag @tweet.image %>
     <% if user_signed_in? && current_user.id == @tweet.user_id %>
       <div class="more">
         <span><%= image_tag 'arrow_top.png' %></span>
@@ -22,9 +23,9 @@
   </div>
    <div class="container">
     <% if user_signed_in? %>
-      <%= form_with(model: [@tweet, @comment], local: true) do |form| %>
-        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
-        <%= form.submit "SEND" %>
+      <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+        <%= f.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= f.submit "SEND" %>
       <% end %>
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>

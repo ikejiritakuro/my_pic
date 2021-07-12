@@ -16,38 +16,38 @@ RSpec.describe User, type: :model do
       it 'nicknameが空の時は登録できないこと' do
         @user.nickname = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname can't be blank")
+        expect(@user.errors.full_messages).to include("ニックネームを入力してください")
       end
       it 'emailが空では登録できないこと' do
         @user.email = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email can't be blank")
+        expect(@user.errors.full_messages).to include("Eメールを入力してください")
       end
       it 'passwordが空では登録できないこと' do
         @user.password = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password can't be blank")
+        expect(@user.errors.full_messages).to include("パスワードを入力してください")
       end
       it 'password_confirmationが空では登録できないこと' do
         @user.password_confirmation = ''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードの入力が一致しません")
       end
       it 'nicknameは6文字以上では登録できないこと' do
         @user.nickname = 'testdes'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Nickname is too long (maximum is 6 characters)")
+        expect(@user.errors.full_messages).to include("ニックネームは6文字以内で入力してください")
       end
       it 'passwordは6文字以上でないと登録できないこと' do
         @user.password = 'asdfg'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("パスワードは6文字以上で入力してください")
       end
       it 'passwordとpassword_confirmationが不一致では登録できないこと' do
         @user.password = 'test35'
         @user.password_confirmation = 'test57'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードの入力が一致しません")
       end
     end
   end

@@ -61,3 +61,7 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem "aws-sdk-s3", require: false
 gem 'rails-i18n'
+#gem 'omniauth-facebook'
+#gem 'dotenv-rails'
+#gem "omniauth-rails_csrf_protection"
+#gem 'omniauth', '~>2.0.4'

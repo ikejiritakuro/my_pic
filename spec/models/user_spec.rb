@@ -49,6 +49,11 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードの入力が一致しません")
       end
+      it 'emailは@無しでは登録できないこと' do
+        @user.email = 'hogehuga.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Eメールは不正な値です")
+      end
     end
   end
 end

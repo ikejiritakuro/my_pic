@@ -14,22 +14,26 @@
         <%= f.email_field :email %>
       </div>
 
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %>文字以上)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Sign up" %>
-      </div>
+      <%#if @sns_id.present? %>
+        <%#= hidden_field_tag :sns_auth, true %>
+      <%# else %>
+        <div class="field">
+          <%= f.label :password %>
+          <% @minimum_password_length %>
+            <em>(<%= @minimum_password_length %>文字以上)</em>
+            <br />
+            <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+  
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      <%# end %>
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+          <%#= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post %> 
     <% end %>
   </div>
 </div>

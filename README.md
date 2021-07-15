@@ -1,24 +1,56 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type                | Options                  |
+|--------------------|---------------------|------------------------- |
+| email              | string              | null: false              |
+| encrypted_password | string              | null: false              |
+| nickname           | string              | null: false              |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :tweets
+- has_many :comments
+- has_many :sns_credentials
 
-* Configuration
+## tweets table
 
-* Database creation
+| Column          | Type         | Options           |
+|-----------------|--------------|-------------------|
+| text            | text         | null: false       |
+| user            | references   | foreign_key: true |
 
-* Database initialization
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_many :comments
+- has_one_attached :image
 
-* Deployment instructions
+## comments table
 
-* ...
+| Column      | Type       | Options           |
+|-------------|------------|-------------------|
+| user        | references | foreign_key: true |
+| tweet       | references | foreign_key: true |
+| text        | text       |                   |
+
+### Association
+
+- belongs_to :tweet
+- belongs_to :user
+
+
+## SNS_credentials  table
+
+| Column                  | Type       | Options           |
+|-------------------------|------------|-------------------|
+| provider                | string     | null: false       |
+| uid                     | string     | null: false       |
+| user                    | references | foreign_key: true |
+
+
+### Association
+
+- belongs_to :user, optional: true
